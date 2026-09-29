@@ -1,22 +1,18 @@
 class Solution {
-List<String>BTPaths = new ArrayList<>();
-    void path(TreeNode tptr,String str){
+    void path(TreeNode tptr,String str,List<String> BTPaths){
         if(tptr==null) return;
-        if(str.equals("")){
-            str=""+tptr.val;
-        }
-        else{
-            str=str+"->"+tptr.val;
-        }
         if(tptr.left==null && tptr.right==null){
+            str=str+tptr.val;
             BTPaths.add(str);
             return;
         }
-        path(tptr.left,str);
-        path(tptr.right,str);
+        str=str+tptr.val+"->";
+        path(tptr.left,str,BTPaths);
+        path(tptr.right,str,BTPaths);
     }
     public List<String> binaryTreePaths(TreeNode root) {
-        path(root,"");
+        List<String>BTPaths = new ArrayList<>();
+        path(root,"",BTPaths);
         return BTPaths;
     }
 }
