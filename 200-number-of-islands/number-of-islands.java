@@ -1,11 +1,11 @@
 class Solution {
     
     static void is_land(char [][] grid,int r, int c, boolean[][] vis){
-        if(r<0 || r>=grid.length || c<0 || c>=grid[0].length) return;
-        if(grid[r][c]=='0') return;
-        if(vis[r][c]==true) return;
+        if(r<0 || r>=grid.length || c<0 || c>=grid[0].length) return;    //boundary
+        if(grid[r][c]=='0') return;                                      //water
+        if(vis[r][c]==true) return;                                      //vis 
         vis[r][c]=true;
-            is_land(grid, r-1, c, vis);
+            is_land(grid, r-1, c, vis); 
             is_land(grid, r, c+1, vis);
             is_land(grid, r+1, c, vis);
             is_land(grid, r, c-1, vis);
